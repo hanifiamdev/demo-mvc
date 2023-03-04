@@ -60,6 +60,9 @@
               <td th:text="${product.code}"></td>
               <td th:text="${product.name}"></td>
               <td th:text="${product.price}"></td>
+              <td>
+                <a class="btn btn-danger" th:href="@{'/delete/'+${product.id}}">Del</a>
+              </td>
             </tr>
           </tbody>
         </table>
