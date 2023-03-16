@@ -42,6 +42,17 @@ public class HomeController {
     public String delete(@PathVariable("id") Long id){
         productService.deleteById(id);
         return "redirect:/";
+    }
 
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model){
+        model.addAttribute("product", productService.findById(id));
+        return "edit";
+    }
+
+    @PostMapping("/update")
+    public String edit(Product product, Model model){
+        productService.updateProduct(product);
+        return "redirect:/";
     }
 }

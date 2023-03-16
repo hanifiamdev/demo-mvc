@@ -1,8 +1,8 @@
 package com.hanifiamdev.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -35,5 +35,13 @@ public class ProductService {
     public void deleteById(long id){
         products.removeIf(p -> p.getId() == id);
     }
-    
+
+    public Optional<Product> findById(long id){
+        return products.stream().filter(p -> p.getId() == id).findFirst();
+    }
+
+    public void updateProduct(Product product){
+        deleteById(product.getId());
+        products.add(product);
+    }
 }
